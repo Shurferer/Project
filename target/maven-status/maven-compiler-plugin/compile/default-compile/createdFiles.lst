@@ -1,0 +1,15 @@
+com\test\model\User.class
+com\test\service\ProductService.class
+com\test\DaoImplementation\OrderDaoImpl.class
+com\test\service\OrderService.class
+com\test\DaoInterfaces\UserDAO.class
+com\test\controller\ProductController.class
+com\test\DaoImplementation\ProductDaoImpl.class
+com\test\service\UserService.class
+com\test\DaoInterfaces\ProductDAO.class
+com\test\model\Product.class
+com\test\DaoInterfaces\OrderDAO.class
+com\test\controller\OrderController.class
+com\test\DaoImplementation\UserDaoImpl.class
+com\test\model\Order.class
+com\test\controller\UserController.class
