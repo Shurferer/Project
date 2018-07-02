@@ -54,7 +54,8 @@ public class UserController {
                     return "/adminPage";
                 } else {
                     session.setAttribute("orderList", orderList);
-                    return "redirect:/clientPage/Hi " + this.user.getName() + ". Please make an order.";
+//                    return "redirect:/clientPage/Hi " + this.user.getName() + ". Please make an order.";
+                return null;
                 }
             } else {
                 model.addAttribute("print", "Access denied.");
