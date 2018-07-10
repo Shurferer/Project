@@ -26,21 +26,27 @@ public class ProductDaoImpl implements ProductDAO {
 
     @Override
     public Product getProductByID(int Id) {
-        Query query2 = em.createQuery("from Product where ID=:productID ");
-        query2.setParameter("productID", Id);
-        Product product = (Product) query2.getSingleResult();
-        logger.info("Product successfully loaded. Product details: " + product);
-        return product;
+        try {
+            Query query2 = em.createQuery("from Product where ID=:productID ");
+            query2.setParameter("productID", Id);
+            Product product = (Product) query2.getSingleResult();
+            logger.info("Product successfully loaded. Product details: " + product);
+            return product;
+        } catch (Exception e) {
+            logger.error("Exception while trying to getProductByID. Product id is not present.");
+            return null;
+        }
     }
-    
+
     @Override
     public Product getProductByName(String name) {
         Query query2 = em.createQuery("from Product where name=:name ");
         query2.setParameter("name", name);
-        List <Product> list  = (List) query2.getResultList();
-        Product product=null;
-        if (!(list.isEmpty())){
-        product = (Product) query2.getSingleResult();}
+        List<Product> list = (List) query2.getResultList();
+        Product product = null;
+        if (!(list.isEmpty())) {
+            product = (Product) query2.getSingleResult();
+        }
         logger.info("Product successfully loaded. Product details: " + product);
         return product;
     }
@@ -52,15 +58,21 @@ public class ProductDaoImpl implements ProductDAO {
     }
 
     @Override
-    public void removeProduct(int id) {
-        Product product = new Product();
-        Query query2 = em.createQuery("from Product where ID=:productID ");
-        query2.setParameter("productID", id);
-        product = (Product) query2.getSingleResult();
-        if (product != null) {
-            em.remove(product);
+    public Product removeProduct(int id) {
+        try {
+            Product product = new Product();
+            Query query2 = em.createQuery("from Product where ID=:productID ");
+            query2.setParameter("productID", id);
+            product = (Product) query2.getSingleResult();
+            if (product != null) {
+                em.remove(product);
+            }
+            logger.info("Product successfully removed. Product details: " + product);
+            return product;
+        } catch (Exception e) {
+            logger.error("Exception while trying to remove product. Product id is not present.");
+            return null;
         }
-        logger.info("Product successfully removed. Product details: " + product);
     }
 
     @Override
@@ -72,5 +84,4 @@ public class ProductDaoImpl implements ProductDAO {
         }
         return products;
     }
-
 }

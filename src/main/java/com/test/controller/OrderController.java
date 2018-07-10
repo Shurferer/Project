@@ -30,7 +30,7 @@ public class OrderController {
     @Autowired
     UserService userService;
 
-    @RequestMapping(value = "clientPage/addToOrder/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "addToOrder/{id}", method = RequestMethod.POST)
     public String addProductToOrder(@PathVariable("id") int id, ModelMap model, HttpSession session,
             @Valid Order order, BindingResult result) {
         String print;

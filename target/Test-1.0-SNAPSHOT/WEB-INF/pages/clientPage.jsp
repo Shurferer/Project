@@ -1,8 +1,7 @@
 <%@page import="com.test.model.Order"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page language = "java" contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-
+<%@ page contentType="text/html;charset=utf-8" %>
 
 
 <html>
@@ -14,8 +13,7 @@
         <br/>
         <br/>
         <a href="<c:url value="/"/>">Exit</a>
-        <!--<h1>${print}</h1>-->
-        <h1>${user.name}</h1>
+        <h1>${print}</h1>
         <h3><a href=" <c:url value="/basket"/>"> Basket </a></h3>
         <h2>Please choose products:</h2>
         <c:if test="${!empty listProducts}">
