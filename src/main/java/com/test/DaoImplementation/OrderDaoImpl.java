@@ -5,14 +5,10 @@ import com.test.model.Order;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class OrderDaoImpl implements OrderDAO {
-
-    private static final Logger logger = LoggerFactory.getLogger(OrderDaoImpl.class);
 
     @PersistenceContext
     private EntityManager em;
@@ -22,14 +18,12 @@ public class OrderDaoImpl implements OrderDAO {
         Query query = em.createQuery("from Orders where ID=:orderID ");
         query.setParameter("orderID", Id);
         Order order = (Order) query.getSingleResult();
-        logger.info("Order successfully loaded. Order details: " + order);
         return order;
     }
 
     @Override
     public void addOrder(Order order) {
         em.merge(order);
-        logger.info("Order successfully added. Order details: " + order);
     }
 
     @Override
@@ -41,7 +35,6 @@ public class OrderDaoImpl implements OrderDAO {
         if (order2 != null) {
             em.remove(order2);
         }
-        logger.info("Order successfully removed. Order details: " + order2);
     }
 
     @Override

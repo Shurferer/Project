@@ -1,6 +1,7 @@
 com\test\model\User.class
 com\test\service\ProductService.class
 com\test\DaoImplementation\OrderDaoImpl.class
+com\test\logging\OrderControllerLogger.class
 com\test\service\OrderService.class
 com\test\DaoInterfaces\UserDAO.class
 com\test\controller\ProductController.class

@@ -80,6 +80,6 @@ public class Order implements Serializable {
     }
 
     public String toStrig() {
-        return "Order id: " + Id + ", made by " + user + ".";
+        return "Order id: " + Id + ", made by " + user + "." +" Ordered product -"+ product.getName();
     }
 }

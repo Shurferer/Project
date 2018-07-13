@@ -1,4 +1,5 @@
 D:\Java\Task\Project\src\main\java\com\test\controller\UserController.java
+D:\Java\Task\Project\src\main\java\com\test\logging\OrderControllerLogger.java
 D:\Java\Task\Project\src\main\java\com\test\model\Order.java
 D:\Java\Task\Project\src\main\java\com\test\controller\OrderController.java
 D:\Java\Task\Project\src\main\java\com\test\DaoImplementation\UserDaoImpl.java
@@ -11,5 +12,6 @@ D:\Java\Task\Project\src\main\java\com\test\DaoImplementation\OrderDaoImpl.java
 D:\Java\Task\Project\src\main\java\com\test\DaoInterfaces\OrderDAO.java
 D:\Java\Task\Project\src\main\java\com\test\service\UserService.java
 D:\Java\Task\Project\src\main\java\com\test\model\Product.java
+D:\Java\Task\Project\src\main\java\com\test\logging\OrderDaoImplLogger.java
 D:\Java\Task\Project\src\main\java\com\test\DaoImplementation\ProductDaoImpl.java
 D:\Java\Task\Project\src\main\java\com\test\controller\ProductController.java

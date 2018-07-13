@@ -33,7 +33,7 @@ public class OrderController {
     @RequestMapping(value = "addToOrder/{id}", method = RequestMethod.POST)
     public String addProductToOrder(@PathVariable("id") int id, ModelMap model, HttpSession session,
             @Valid Order order, BindingResult result) {
-        String print;
+        String print = null;
         if (result.hasErrors()) {
             print = "Wrong number of products.";
             return "redirect:/clientPage/" + print;
@@ -84,9 +84,11 @@ public class OrderController {
         for (Order order : orderList) {
             int id = order.getProduct().getID();
             Product product = productService.getProductByID(id);
-            Integer maxOrderId= orderService.getLastOrderId();
-            if (maxOrderId==null)maxOrderId=0;
-            order.setId(maxOrderId+1);
+            Integer maxOrderId = orderService.getLastOrderId();
+            if (maxOrderId == null) {
+                maxOrderId = 0;
+            }
+            order.setId(maxOrderId + 1);
             order.setProduct(product);
             order.setUser(user);
             order.setDate(new Date());
@@ -107,7 +109,7 @@ public class OrderController {
     @RequestMapping(value = "/finishOrder", method = RequestMethod.GET)
     public String finishUserOrder(HttpSession session) {
         session.invalidate();
-                     String print = "Your order is compleete. Please make one more or leave the program.";
+        String print = "Your order is compleete. Please make one more or leave the program.";
         return "redirect:/clientPage/" + print;
     }
 }
