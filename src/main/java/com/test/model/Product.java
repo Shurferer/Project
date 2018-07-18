@@ -28,7 +28,7 @@ public class Product implements Serializable {
 
     @Column(name = "Price", unique = false, nullable = true, length = 10)
     @Min(value = 1, message = "You can't choose less than 1.")
-    @Max(value = 10000, message = "You can't choose more than 10000.")
+    @Max(value = 1000, message = "You can't choose more than 10000.")
     private int price;
 
     @Id

@@ -1,15 +1,18 @@
-D:\Java\Курсы it_academy\Проекты\NetBeansProject\Test\src\main\java\com\test\model\Order.java
-D:\Java\Курсы it_academy\Проекты\NetBeansProject\Test\src\main\java\com\test\controller\OrderController.java
-D:\Java\Курсы it_academy\Проекты\NetBeansProject\Test\src\main\java\com\test\service\ProductService.java
-D:\Java\Курсы it_academy\Проекты\NetBeansProject\Test\src\main\java\com\test\service\UserService.java
-D:\Java\Курсы it_academy\Проекты\NetBeansProject\Test\src\main\java\com\test\model\User.java
-D:\Java\Курсы it_academy\Проекты\NetBeansProject\Test\src\main\java\com\test\DaoInterfaces\ProductDAO.java
-D:\Java\Курсы it_academy\Проекты\NetBeansProject\Test\src\main\java\com\test\model\Product.java
-D:\Java\Курсы it_academy\Проекты\NetBeansProject\Test\src\main\java\com\test\controller\ProductController.java
-D:\Java\Курсы it_academy\Проекты\NetBeansProject\Test\src\main\java\com\test\DaoImplementation\OrderDaoImpl.java
-D:\Java\Курсы it_academy\Проекты\NetBeansProject\Test\src\main\java\com\test\DaoImplementation\ProductDaoImpl.java
-D:\Java\Курсы it_academy\Проекты\NetBeansProject\Test\src\main\java\com\test\controller\UserController.java
-D:\Java\Курсы it_academy\Проекты\NetBeansProject\Test\src\main\java\com\test\DaoInterfaces\UserDAO.java
-D:\Java\Курсы it_academy\Проекты\NetBeansProject\Test\src\main\java\com\test\DaoImplementation\UserDaoImpl.java
-D:\Java\Курсы it_academy\Проекты\NetBeansProject\Test\src\main\java\com\test\DaoInterfaces\OrderDAO.java
-D:\Java\Курсы it_academy\Проекты\NetBeansProject\Test\src\main\java\com\test\service\OrderService.java
+D:\Java\Task\Project\src\main\java\com\test\controller\UserController.java
+D:\Java\Task\Project\src\main\java\com\test\logging\OrderControllerLogger.java
+D:\Java\Task\Project\src\main\java\com\test\model\Order.java
+D:\Java\Task\Project\src\main\java\com\test\controller\OrderController.java
+D:\Java\Task\Project\src\main\java\com\test\DaoImplementation\UserDaoImpl.java
+D:\Java\Task\Project\src\main\java\com\test\DaoInterfaces\UserDAO.java
+D:\Java\Task\Project\src\main\java\com\test\DaoInterfaces\ProductDAO.java
+D:\Java\Task\Project\src\main\java\com\test\logging\UserControllerLogger.java
+D:\Java\Task\Project\src\main\java\com\test\service\OrderService.java
+D:\Java\Task\Project\src\main\java\com\test\service\ProductService.java
+D:\Java\Task\Project\src\main\java\com\test\model\User.java
+D:\Java\Task\Project\src\main\java\com\test\DaoImplementation\OrderDaoImpl.java
+D:\Java\Task\Project\src\main\java\com\test\DaoInterfaces\OrderDAO.java
+D:\Java\Task\Project\src\main\java\com\test\service\UserService.java
+D:\Java\Task\Project\src\main\java\com\test\model\Product.java
+D:\Java\Task\Project\src\main\java\com\test\logging\OrderDaoImplLogger.java
+D:\Java\Task\Project\src\main\java\com\test\DaoImplementation\ProductDaoImpl.java
+D:\Java\Task\Project\src\main\java\com\test\controller\ProductController.java

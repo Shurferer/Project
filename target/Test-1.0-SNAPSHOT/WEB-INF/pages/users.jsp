@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib  uri="http://www.springframework.org/tags" prefix="spring"%>
-
+<%@ page contentType="text/html;charset=utf-8" %>
 
 <html>
     <head>
@@ -16,7 +16,7 @@
         <br/>
         <br/>        
         <h1> User list </h1> 
-
+        <h2>${print}</h2>
         <table border="1">
             <tr>
                 <th width ="80" > ID </th>

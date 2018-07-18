@@ -8,6 +8,7 @@ import com.test.service.ProductService;
 import com.test.service.UserService;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,10 +31,10 @@ public class OrderController {
     @Autowired
     UserService userService;
 
-    @RequestMapping(value = "clientPage/addToOrder/{id}", method = RequestMethod.POST)
-    public String addProductToOrder(@PathVariable("id") int id, ModelMap model, HttpSession session,
+    @RequestMapping(value = "addToOrder/{id}", method = RequestMethod.POST)
+    public String addProductToOrder(@PathVariable("id") int id, ModelMap model, HttpSession session, HttpServletRequest request,
             @Valid Order order, BindingResult result) {
-        String print;
+        String print = null;
         if (result.hasErrors()) {
             print = "Wrong number of products.";
             return "redirect:/clientPage/" + print;
@@ -53,12 +54,12 @@ public class OrderController {
         }
         orderList.add(order);
         session.setAttribute("orderList", orderList);
-        print = "Product added to your order. Please make one more or compleete your order.";
-        return "redirect:/clientPage/" + print;
+        session.setAttribute("message", "Product added to your order. Please make one more or compleete your order.");
+        return "redirect:/clientPage";
     }
 
     @RequestMapping(value = "/basket", method = RequestMethod.GET)
-    public String saveOrder(ModelMap model, HttpSession session) {
+    public String saveOrder() {
         return "/basket";
     }
 
@@ -84,9 +85,11 @@ public class OrderController {
         for (Order order : orderList) {
             int id = order.getProduct().getID();
             Product product = productService.getProductByID(id);
-            Integer maxOrderId= orderService.getLastOrderId();
-            if (maxOrderId==null)maxOrderId=0;
-            order.setId(maxOrderId+1);
+            Integer maxOrderId = orderService.getLastOrderId();
+            if (maxOrderId == null) {
+                maxOrderId = 0;
+            }
+            order.setId(maxOrderId + 1);
             order.setProduct(product);
             order.setUser(user);
             order.setDate(new Date());
@@ -106,8 +109,8 @@ public class OrderController {
 
     @RequestMapping(value = "/finishOrder", method = RequestMethod.GET)
     public String finishUserOrder(HttpSession session) {
-        session.invalidate();
-                     String print = "Your order is compleete. Please make one more or leave the program.";
+        session.setAttribute("orderList", new ArrayList<Order>());
+        String print = "Your order is compleete. Please make one more or leave the program.";
         return "redirect:/clientPage/" + print;
     }
 }

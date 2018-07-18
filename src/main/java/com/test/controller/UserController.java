@@ -32,7 +32,9 @@ public class UserController {
     ArrayList<Order> orderList = new ArrayList<Order>();
 
     @RequestMapping(method = RequestMethod.GET)
-    public String startPage(ModelMap model) {
+    public String startPage(ModelMap model, HttpSession session) {
+        orderList = new ArrayList<Order>();
+        session.setAttribute("orderList", orderList);
         model.addAttribute("user", new User());
         return "index";
     }
@@ -47,14 +49,16 @@ public class UserController {
             if (userService.checkAccess(user)) {
                 this.user = userService.getUserByLogin(user.getLogin());
                 HttpSession session = request.getSession();
-                request.setAttribute("user", this.user);
-//                session.setAttribute("user", this.user);
+                session.setAttribute("user", this.user);
                 if (user.getLogin().equals("admin")) {
                     model.addAttribute("print", "Hi admin. Make a choise");
-                    return "/adminPage";
+                    return "adminPage";
                 } else {
                     session.setAttribute("orderList", orderList);
-                    return "redirect:/clientPage/Hi " + this.user.getName() + ". Please make an order.";
+                    model.addAttribute("print", "Hi " + this.user.getName() + ". Please make an order.");
+                    model.addAttribute("listProducts", productService.listProducts());
+                    model.addAttribute("order", new Order());
+                    return "clientPage";
                 }
             } else {
                 model.addAttribute("print", "Access denied.");
@@ -73,6 +77,15 @@ public class UserController {
 
     @RequestMapping(value = "/clientPage/{print}", method = RequestMethod.GET)
     public String returnToClientPage(@PathVariable("print") String print, ModelMap model, HttpSession session) {
+        model.addAttribute("print", print);
+        model.addAttribute("listProducts", productService.listProducts());
+        model.addAttribute("order", new Order());
+        return "clientPage";
+    }
+
+    @RequestMapping(value = "/clientPage", method = RequestMethod.GET)
+    public String returnToClientPage2(ModelMap model, HttpSession session) {
+        String print = (String)session.getAttribute("message");
         model.addAttribute("print", print);
         model.addAttribute("listProducts", productService.listProducts());
         model.addAttribute("order", new Order());
@@ -112,25 +125,33 @@ public class UserController {
     }
 
     @RequestMapping(value = "/users/remove/{id}")
-    public String removeUser(@PathVariable("id") int id) {
+    public String removeUser(@PathVariable("id") int id, ModelMap model) {
         userService.removeUser(id);
-        return "redirect:/users";
+        model.addAttribute("user", new User());
+        model.addAttribute("listUsers", userService.listUsers());
+        model.addAttribute("print", "User successfully removed.");
+        return "users";
     }
 
     @RequestMapping(value = "/users/edit/{id}")
-    public String editUser(@PathVariable("id") int id) {
+    public String editUser(@PathVariable("id") int id, ModelMap model) {
         User user = userService.getUserByID(id);
         user.setAddedToBlackList(true);
         userService.updateUser(user);
-        return "redirect:/users";
+        model.addAttribute("user", new User());
+        model.addAttribute("listUsers", userService.listUsers());
+        model.addAttribute("print", "User successfully added to black list.");
+        return "users";
     }
 
     @RequestMapping(value = "/users/edit2/{id}")
-    public String deleteFromBlackList(@PathVariable("id") int id) {
+    public String deleteFromBlackList(@PathVariable("id") int id, ModelMap model) {
         User user = userService.getUserByID(id);
         user.setAddedToBlackList(false);
         userService.updateUser(user);
-        return "redirect:/usersBlackList";
+        model.addAttribute("listUsers", userService.listUsers());
+        model.addAttribute("print", "User removed from black list.");
+        return "usersBlackList";
     }
 
     @RequestMapping(value = "/usersBlackList", method = RequestMethod.GET)

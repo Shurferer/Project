@@ -6,14 +6,11 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import org.slf4j.Logger;
 import org.springframework.stereotype.Repository;
-import org.slf4j.LoggerFactory;
 
 @Repository
 public class UserDaoImpl implements UserDAO {
 
-    private static final Logger logger = LoggerFactory.getLogger(UserDaoImpl.class);
 
     @PersistenceContext
     private EntityManager em;
@@ -21,7 +18,6 @@ public class UserDaoImpl implements UserDAO {
     @Override
     public void addUserToDataBase(User user) {
         em.merge(user);
-        logger.info("User successfully added. User details: " + user);
     }
 
     @Override
@@ -43,7 +39,6 @@ public class UserDaoImpl implements UserDAO {
         Query query = em.createQuery("from User where login=:login ");
         query.setParameter("login", login);
         User user = (User) query.getSingleResult();
-        logger.info("User successfully loaded. User details: " + user);
         return user;
     }
 
@@ -52,7 +47,6 @@ public class UserDaoImpl implements UserDAO {
         Query query2 = em.createQuery("from User where Id=:userID ");
         query2.setParameter("userID", id);
         User client = (User) query2.getSingleResult();
-        logger.info("User successfully loaded. User details: " + client);
         return client;
     }
 
@@ -77,7 +71,6 @@ public class UserDaoImpl implements UserDAO {
         Query query = em.createQuery("from User");
         List<User> users = query.getResultList();
         for (User user : users) {
-            logger.info("List product details: " + user);
         }
         return users;
     }
@@ -85,7 +78,6 @@ public class UserDaoImpl implements UserDAO {
     @Override
     public void updateUser(User user) {
         em.merge(user);
-        logger.info("User successfully added. User details: " + user);
     }
 
     @Override
@@ -97,6 +89,5 @@ public class UserDaoImpl implements UserDAO {
         if (user != null) {
             em.remove(user);
         }
-        logger.info("User successfully removed. User details: " + user);
     }
 }

@@ -29,8 +29,8 @@ public class ProductService {
     }
 
     @Transactional
-    public void removeProduct(int id) {
-        productDao.removeProduct(id);
+    public Product removeProduct(int id) {
+        return productDao.removeProduct(id);
     }
 
     @Transactional

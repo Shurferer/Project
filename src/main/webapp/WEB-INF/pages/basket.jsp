@@ -1,14 +1,13 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=utf-8" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Basket</title>
     </head>
     <body>
-        <a href="<c:url value="/clientPage/You can choose more products."/>">Back to previous page</a>
+        <a href="<c:url value="/clientPage"/>">Back to previous page</a>
         <br/>
         <br/>
         <h1> Order list </h1> 

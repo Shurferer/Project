@@ -29,48 +29,58 @@ public class ProductController {
         model.addAttribute("product", new Product());
         model.addAttribute("listProducts", productService.listProducts());
 
-        return "/products";
+        return "products";
     }
 
-    @RequestMapping(value = "/products/add", method = RequestMethod.POST)
+    @RequestMapping(value = "products/add", method = RequestMethod.POST)
     public String addProduct(ModelMap model, @Valid @ModelAttribute("product") Product product, BindingResult result) {
         if (result.hasErrors()) {
-            model.addAttribute("print", "Name or price of the product iz not valid.");
+            model.addAttribute("print", "Name or price of the product is not valid.");
             model.addAttribute("product", new Product());
             model.addAttribute("listProducts", productService.listProducts());
-            return "/products";
+            return "products";
         }
         try {
-
-            if (productService.getProductByName(product.getName()) == null) {
-                if (product.getID() == null) {
-                    productService.addProduct(product);
-                } else {
-                    productService.updateProduct(product);
-                }
-                return "redirect:/products";
+            if ((productService.getProductByName(product.getName()) == null) && (product.getID() == null)) {
+                productService.addProduct(product);
+                model.addAttribute("print", "Product " + product.getName() + " was successfully added.");
             } else {
-                model.addAttribute("print", "Product with name " + product.getName() + " already exists.");
-                model.addAttribute("product", new Product());
-                model.addAttribute("listProducts", productService.listProducts());
-                return "/products";
+                model.addAttribute("print", "Product " + product.getName() + " was successfully updated.");
+                productService.updateProduct(product);
             }
+            model.addAttribute("product", new Product());
+            model.addAttribute("listProducts", productService.listProducts());
+            return "products";
         } catch (Exception e) {
-            model.addAttribute("print", e.getMessage());
-            return "/products";
+            model.addAttribute("product", new Product());
+            model.addAttribute("listProducts", productService.listProducts());
+            model.addAttribute("print", "Product " + product.getName() + " is already exist !!! ");
+            return "products";
         }
     }
 
-    @RequestMapping(value = "/remove/{id}")
-    public String removeProduct(@PathVariable("id") int id) {
-        productService.removeProduct(id);
-        return "redirect:/products";
+    @RequestMapping(value = "remove/{id}", method = RequestMethod.GET)
+    public String removeProduct(@PathVariable("id") int id, ModelMap model) {
+        Product product = productService.removeProduct(id);
+        if (!(product == null)) {
+            model.addAttribute("print", "Product " + product.getName() + " was successfully deleted.");
+        } else {
+            model.addAttribute("print", "Product  was deleted early.");
+        }
+        model.addAttribute("product", new Product());
+        model.addAttribute("listProducts", productService.listProducts());
+        return "products";
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public String editProduct(@PathVariable("id") int id, Model model) {
-        model.addAttribute("product", productService.getProductByID(id));
+        Product product = productService.getProductByID(id);
+        if (!(product == null)) {
+            model.addAttribute("product", product);
+        } else {
+            model.addAttribute("print", "Product was deleted early.");
+        }
         model.addAttribute("listProducts", productService.listProducts());
-        return "/products";
+        return "products";
     }
 }
