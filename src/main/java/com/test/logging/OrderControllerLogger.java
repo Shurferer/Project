@@ -27,7 +27,7 @@ public class OrderControllerLogger {
     @After("execution(* com.test.controller.OrderController.addProductToOrder(..))")
     public void addProductToOrderUserLogAfter(JoinPoint jp) {
         Object[] params = jp.getArgs();
-        Order order = (Order) params[3];
+        Order order = (Order) params[4];
         String info = "Order with product " + order.getProduct().getName() + " successfully done.";
         orderLogger.info(info);
     }

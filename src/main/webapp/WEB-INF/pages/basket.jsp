@@ -7,7 +7,7 @@
         <title>Basket</title>
     </head>
     <body>
-        <a href="<c:url value="/clientPage/You can choose more products."/>">Back to previous page</a>
+        <a href="<c:url value="/clientPage"/>">Back to previous page</a>
         <br/>
         <br/>
         <h1> Order list </h1> 

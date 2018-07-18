@@ -13,7 +13,7 @@ public interface ProductDAO {
 
     List<Product> listProducts();
 
-    Product getProductByID(int Id);
+    Product getProductByID (int Id);
     
     Product getProductByName(String name);
 

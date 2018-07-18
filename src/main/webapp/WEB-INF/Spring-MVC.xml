@@ -50,8 +50,8 @@
             <value>.jsp</value>
         </property>
     </bean>
-        <aop:aspectj-autoproxy proxy-target-class="true"/>
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
     <bean class="com.test.logging.OrderControllerLogger"/>
-        <bean class="com.test.logging.UserControllerLogger"/>
-
+    <bean class="com.test.logging.UserControllerLogger"/>
+    <bean class="com.test.logging.OrderDaoImplLogger"/>
 </beans>

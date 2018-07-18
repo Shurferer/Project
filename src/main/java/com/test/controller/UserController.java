@@ -32,7 +32,9 @@ public class UserController {
     ArrayList<Order> orderList = new ArrayList<Order>();
 
     @RequestMapping(method = RequestMethod.GET)
-    public String startPage(ModelMap model) {
+    public String startPage(ModelMap model, HttpSession session) {
+        orderList = new ArrayList<Order>();
+        session.setAttribute("orderList", orderList);
         model.addAttribute("user", new User());
         return "index";
     }
@@ -81,12 +83,14 @@ public class UserController {
         return "clientPage";
     }
 
-//    @RequestMapping(value = "/clientPage", method = RequestMethod.GET)
-//    public String returnToClientPage2(ModelMap model, HttpSession session) {
-//        model.addAttribute("listProducts", productService.listProducts());
-//        model.addAttribute("order", new Order());
-//        return "clientPage";
-//    }
+    @RequestMapping(value = "/clientPage", method = RequestMethod.GET)
+    public String returnToClientPage2(ModelMap model, HttpSession session) {
+        String print = (String)session.getAttribute("message");
+        model.addAttribute("print", print);
+        model.addAttribute("listProducts", productService.listProducts());
+        model.addAttribute("order", new Order());
+        return "clientPage";
+    }
 
     @RequestMapping(value = "/reg", method = RequestMethod.GET)
     public String registration(ModelMap model) {

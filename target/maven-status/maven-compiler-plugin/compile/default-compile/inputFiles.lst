@@ -5,6 +5,7 @@ D:\Java\Task\Project\src\main\java\com\test\controller\OrderController.java
 D:\Java\Task\Project\src\main\java\com\test\DaoImplementation\UserDaoImpl.java
 D:\Java\Task\Project\src\main\java\com\test\DaoInterfaces\UserDAO.java
 D:\Java\Task\Project\src\main\java\com\test\DaoInterfaces\ProductDAO.java
+D:\Java\Task\Project\src\main\java\com\test\logging\UserControllerLogger.java
 D:\Java\Task\Project\src\main\java\com\test\service\OrderService.java
 D:\Java\Task\Project\src\main\java\com\test\service\ProductService.java
 D:\Java\Task\Project\src\main\java\com\test\model\User.java

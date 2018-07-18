@@ -52,7 +52,9 @@ public class ProductController {
             model.addAttribute("listProducts", productService.listProducts());
             return "products";
         } catch (Exception e) {
-            model.addAttribute("print", "Product " + product.getName() + " is already exists !!! ");
+            model.addAttribute("product", new Product());
+            model.addAttribute("listProducts", productService.listProducts());
+            model.addAttribute("print", "Product " + product.getName() + " is already exist !!! ");
             return "products";
         }
     }
